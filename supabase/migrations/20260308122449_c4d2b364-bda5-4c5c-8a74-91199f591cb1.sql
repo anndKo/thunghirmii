@@ -1,0 +1,1 @@
+ALTER TABLE public.rooms ADD COLUMN water_cost_type text DEFAULT 'per_m3';

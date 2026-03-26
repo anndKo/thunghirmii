@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 156 72% 67%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.75rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%), hsl(156 72% 67%));
+    --gradient-hero: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(156 72% 67%) 50%, hsl(38 92% 50%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+
+    --shadow-sm: 0 1px 2px 0 hsl(222 47% 11% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(222 47% 11% / 0.1), 0 2px 4px -2px hsl(222 47% 11% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(222 47% 11% / 0.1), 0 4px 6px -4px hsl(222 47% 11% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(222 47% 11% / 0.1), 0 8px 10px -6px hsl(222 47% 11% / 0.1);
+    --shadow-primary: 0 10px 40px -10px hsl(199 89% 48% / 0.4);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 199 89% 48%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 156 72% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 199 89% 48%;
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .shadow-primary {
+    box-shadow: var(--shadow-primary);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1;
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-hover:hover {
+    box-shadow: var(--shadow-xl);
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 5px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--border));
+    border-radius: 9999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Chat scrollbar */
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: rgba(120,120,120,0.3);
+  border-radius: 10px;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(120,120,120,0.5);
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 12s linear infinite;
+}
+/* Scrollbar đẹp cho modal */
+
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.custom-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+/* Dùng selector cụ thể hơn để chỉ áp dụng cho các tab trong phần tử có lớp "tenant-tabs" */
+.tenant-tabs .TabsTrigger {
+  transition: all 0.3s ease;
+}
+
+/* Khi tab được chọn */
+.tenant-tabs .TabsTrigger[data-state='active'] {
+  font-weight: bold;
+  background-color: #f0f0f0; /* Màu nền khi chọn */
+  color: #333; /* Màu chữ khi chọn */
+  border-bottom: 2px solid #007bff; /* Viền dưới khi chọn */
+}
+
+/* Khi hover */
+.tenant-tabs .TabsTrigger:hover {
+  background-color: #e0e0e0; /* Màu nền khi hover */
+  cursor: pointer;
+}
+
+/* Căn chỉnh các tab sang trái trên màn hình máy tính */
+@media(min-width: 768px) {
+  .tenant-tabs .TabsList {
+    justify-content: flex-start; /* Căn trái các nút */
+  }
+}
+
+/* Giữ các tab ở giữa trên điện thoại */
+@media(max-width: 767px) {
+  .tenant-tabs .TabsList {
+    justify-content: center; /* Giữ các nút ở giữa */
+  }
+}
+
+
+@media (min-width: 641px) {
+  .animate-marquee-mobile {
+    animation: none;
+  }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+@keyframes coin-float {
+  0% { opacity: 0; transform: translateY(20px) scale(0.5); }
+  20% { opacity: 1; transform: translateY(0) scale(1.1); }
+  40% { transform: translateY(-10px) scale(1); }
+  60% { transform: translateY(-30px) scale(0.95); }
+  100% { opacity: 0; transform: translateY(-60px) scale(0.8); }
+}
+.animate-coin-float {
+  animation: coin-float 2s ease-out forwards;
+}
+.custom-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 999px;
+}
+/* 👇 THÊM ĐOẠN NÀY */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 4px; /* 👈 chỉnh độ mỏng ở đây */
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 9999px;
+}
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;   /* 👈 giảm rất nhẹ thôi */
+    transform: scale(1.02); /* 👈 gần như không scale */
+  }
+}
+@keyframes softPulseGray {
+  0%, 100% {
+    background-color: #e5e7eb; /* gray-200 */
+  }
+  50% {
+    background-color: #d1d5db; /* gray-300 */
+  }
+}

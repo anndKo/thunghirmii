@@ -1,0 +1,1 @@
+DELETE FROM blocked_devices; DELETE FROM login_attempts;

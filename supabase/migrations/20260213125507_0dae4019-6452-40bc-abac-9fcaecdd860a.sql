@@ -1,0 +1,1 @@
+ALTER TABLE public.payment_requests ADD COLUMN IF NOT EXISTS qr_url text;

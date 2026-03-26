@@ -1,0 +1,2 @@
+DELETE FROM blocked_devices WHERE fingerprint_hash = '78df209bd42aba5ac53b06dae608ddcdbe8dffa6372c573acefa765db8b1a03b';
+DELETE FROM banned_users WHERE user_id = 'ec6b0d8c-f4b0-468f-b0a8-3a424dce53ef';
